@@ -9,7 +9,7 @@ export default defineConfig(({ mode, command }) => {
 
   // Only add expressPlugin during development (serve mode)
   if (command === 'serve') {
-    plugins.push(expressPlugin();
+    plugins.push(expressPlugin())
   }
 
   return {
