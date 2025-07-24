@@ -4,19 +4,28 @@ import path from "path";
 
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
-  },
-  build: {
-    outDir: "dist/spa",
-  },
-  plugins: [react(), expressPlugin()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./client"),
-      "@shared": path.resolve(__dirname, "./shared"),
+export default defineConfig(({ mode, command }) => {
+  const plubins = [react()];
+
+  // Only add expressPlugin during development (serve mode)
+  if (command === 'serve') {
+    plugins.push(expressPlugin();
+  }
+
+  return {
+    server: {
+      host: ""::",
+      port: 8080,
+    },
+    build: {
+      outDir: "dist/spa",
+    },
+    plugins,
+    resolve: {
+      alias: {
+        "@": path. resolve(_dirname, "*/client"),
+        "@shared": path. resolve(_dirname, "./shared"),
+      };
     },
   },
 }));
